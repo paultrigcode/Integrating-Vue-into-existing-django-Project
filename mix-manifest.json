@@ -1,4 +1,4 @@
 {
-    "/assets/js/vue-app.js": "/assets/js/vue-app.js",
-    "/assets/css/vue-app.css": "/assets/css/vue-app.css"
+    "/static/js/vue-app.js": "/static/js/vue-app.js",
+    "/static/css/vue-app.css": "/static/css/vue-app.css"
 }
