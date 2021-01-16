@@ -7,6 +7,9 @@
                     <div> 
                         I'm an example component. 
                     </div> 
+                    <div> 
+                        {{propfa}}
+                    </div> 
                 </div> 
             </div> 
         </div> 
@@ -16,6 +19,17 @@
 export default { 
     mounted() { 
         console.log('Component mounty.') 
-    } 
+        
+    } ,
+    props: ['propfa'],
+    data(){
+        return{
+        body:'hello'
+
+        }
+    },
+    methods: {
+        
+    }
 } 
 </script>
