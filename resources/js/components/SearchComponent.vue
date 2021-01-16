@@ -6,20 +6,32 @@
 </template>
 
 <script> 
+import axios from 'axios';
 export default { 
     mounted() { 
         console.log('Component Search is here.') 
     },
     data(){
     	return{
-    	 	testBody:'hello'
+    	 	testBody:'hello',
+    	 	result:[]
 
     	}
     },
     methods: {
 	    submit: function() {
         	console.log('Component Search is here. button click') 
-	        this.$emit("tprop", this.testBody);
+        	axios.get(`/search/`, {
+        		params:{
+        			title:this.testBody
+    			}
+    		})
+    		.then((response)=>{
+    			this.result = response.data
+		        this.$emit("tprop", this.result);
+
+    		})
+
 	        this.testBody = "";
 
 	    }

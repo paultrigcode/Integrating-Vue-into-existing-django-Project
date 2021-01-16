@@ -1996,6 +1996,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2003,19 +2005,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component Search is here.');
   },
   data: function data() {
     return {
-      testBody: 'hello'
+      testBody: 'hello',
+      result: []
     };
   },
   methods: {
     submit: function submit() {
+      var _this = this;
+
       console.log('Component Search is here. button click');
-      this.$emit("tprop", this.testBody);
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/search/", {
+        params: {
+          title: this.testBody
+        }
+      }).then(function (response) {
+        _this.result = response.data;
+
+        _this.$emit("tprop", _this.result);
+      });
       this.testBody = "";
     }
   }
@@ -2509,23 +2523,30 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-8" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", [_vm._v("Example Component")]),
-          _vm._v(" "),
-          _c("div", [
-            _vm._v(
-              " \n                    I'm an example component. \n                "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", [
-            _vm._v(
-              " \n                    " +
-                _vm._s(_vm.propfa) +
-                "\n                "
-            )
-          ])
-        ])
+        _c(
+          "div",
+          { staticClass: "card" },
+          [
+            _c("div", [_vm._v("Example Component")]),
+            _vm._v(" "),
+            _c("div", [
+              _vm._v(
+                " \n                    I'm an example component. \n                "
+              )
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.propfa, function(i) {
+              return _c("div", [
+                _vm._v(
+                  " \n                    " +
+                    _vm._s(i.title) +
+                    "\n                "
+                )
+              ])
+            })
+          ],
+          2
+        )
       ])
     ])
   ])
@@ -14806,7 +14827,7 @@ var app = new Vue({
   el: '#app',
   data: function data() {
     return {
-      passec: ""
+      passec: []
     };
   },
   methods: {

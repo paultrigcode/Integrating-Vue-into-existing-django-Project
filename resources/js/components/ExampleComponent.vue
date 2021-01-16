@@ -7,8 +7,8 @@
                     <div> 
                         I'm an example component. 
                     </div> 
-                    <div> 
-                        {{propfa}}
+                    <div v-for="i in propfa"> 
+                        {{i.title}}
                     </div> 
                 </div> 
             </div> 
