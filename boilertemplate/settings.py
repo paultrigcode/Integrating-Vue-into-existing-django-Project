@@ -135,6 +135,8 @@ STATICFILES_DIRS = [
 # else:
 COLLECTED_STATIC_PATH = os.path.join(BASE_DIR, 'assets')
 STATIC_ROOT = COLLECTED_STATIC_PATH
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 
 
