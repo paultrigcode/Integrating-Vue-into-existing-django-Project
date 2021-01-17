@@ -83,6 +83,18 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+#         'NAME': os.getenv("DB_NAME","django-static"),                      # Or path to database file if using sqlite3.
+#         'USER': os.getenv("DB_USER", "root"),
+#         'PASSWORD': os.getenv("DB_PASS", "root"),
+#         'HOST': os.getenv("DB_HOST", "0.0.0"),
+#         'PORT': os.getenv("DB_PORT", "3306"),
+#     }
+# }
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
