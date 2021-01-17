@@ -2,8 +2,10 @@ from django.shortcuts import render
 from django.contrib import auth
 from django.contrib.auth import login, logout
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 
 
+@login_required #redirect when user is not logged in
 def hello(request):
 	return render(request,'index.html')
 

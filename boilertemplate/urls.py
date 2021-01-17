@@ -21,8 +21,8 @@ from post.views import search
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', login,name='login'),
-    path('', login_view,name='login_view'),
-    path('hello/',hello,name='hello'),
+    path('login-view/', login_view,name='login_view'),
+    path('',hello,name='hello'),
     path('search/', search),
 
 

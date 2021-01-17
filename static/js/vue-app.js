@@ -2045,7 +2045,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response);
 
         if (response.status = 200) {
-          window.location.href = '/hello/';
+          window.location.href = '/';
         }
       });
     }

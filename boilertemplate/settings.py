@@ -150,6 +150,10 @@ STATICFILES_DIRS = [
 COLLECTED_STATIC_PATH = os.path.join(BASE_DIR, 'assets')
 STATIC_ROOT = COLLECTED_STATIC_PATH
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# LOGIN_URL=''
+# LOGOUT_REDIRECT_URL ='login-view'
+LOGIN_URL ='login_view'
+# LOGIN_REDIRECT_URL ='/'
 
 
 
