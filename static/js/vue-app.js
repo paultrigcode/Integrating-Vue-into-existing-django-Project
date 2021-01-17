@@ -2022,6 +2022,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
@@ -2046,6 +2047,23 @@ __webpack_require__.r(__webpack_exports__);
 
         if (response.status = 200) {
           window.location.href = '/';
+        } else if (response.status = 401) {
+          document.getElementById("demo").innerHTML = response.data;
+          console.log(response.data);
+        }
+      })["catch"](function (error) {
+        if (error.response.status = 401) {
+          // Request made and server responded
+          document.getElementById("demo").innerHTML = error.response.data;
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
         }
       });
     }
@@ -2641,6 +2659,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
+    _c("p", { attrs: { id: "demo" } }),
+    _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-offset-5 col-md-3" }, [
         _c("div", { staticClass: "form-login" }, [
