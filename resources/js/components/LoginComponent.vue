@@ -8,7 +8,7 @@
             <h4>Welcome back.</h4>
             <input v-model="username" type="text" id="userName" class="form-control input-sm chat-input" placeholder="username" />
             </br>
-            <input v-model="password" type="text" id="userPassword" class="form-control input-sm chat-input" placeholder="password" />
+            <input v-model="password" type="password" id="userPassword" class="form-control input-sm chat-input" placeholder="password" />
             </br>
             <div class="wrapper">
             <span class="group-btn">     

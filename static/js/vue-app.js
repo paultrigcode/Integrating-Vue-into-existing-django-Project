@@ -2701,7 +2701,7 @@ var render = function() {
             ],
             staticClass: "form-control input-sm chat-input",
             attrs: {
-              type: "text",
+              type: "password",
               id: "userPassword",
               placeholder: "password"
             },
