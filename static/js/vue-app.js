@@ -2023,6 +2023,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
@@ -3459,6 +3462,8 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("p", { attrs: { id: "demo" } }),
     _vm._v(" "),
+    _vm._m(0),
+    _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-offset-5 col-md-3" }, [
         _c("div", { staticClass: "form-login" }, [
@@ -3534,7 +3539,23 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container" }, [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-primary",
+          attrs: { href: "/signup-view/", role: "button" }
+        },
+        [_vm._v("Click here to signup")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -3944,7 +3965,11 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "text-center" }, [
       _vm._v("Already have an account? "),
-      _c("a", { attrs: { href: "#" } }, [_vm._v("Login here")])
+      _c(
+        "a",
+        { staticClass: "btn btn-primary", attrs: { href: "/login-view/" } },
+        [_vm._v("Login here")]
+      )
     ])
   }
 ]

@@ -72,7 +72,7 @@
             <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
         </div>
     </form>
-	<div class="text-center">Already have an account? <a href="#">Login here</a></div>
+	<div class="text-center">Already have an account? <a class="btn btn-primary" href="/login-view/">Login here</a></div>
 </div>
 	
 </template>

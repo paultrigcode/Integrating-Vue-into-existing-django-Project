@@ -1,6 +1,9 @@
 <template>
 <div class="container">
 	<p id="demo"></p>
+	<div class="container">
+    	<a class="btn btn-primary" href="/signup-view/" role="button">Click here to signup</a>
+	</div>
 
     <div class="row">
         <div class="col-md-offset-5 col-md-3">
