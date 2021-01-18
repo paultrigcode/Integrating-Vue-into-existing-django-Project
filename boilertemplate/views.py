@@ -31,3 +31,27 @@ def login(request):
 
 def login_view(request):
 	return render(request,'login.html')
+
+
+def signup(request):
+	data_list = []
+	username = request.GET.get('firstname')
+	if username != None or '':
+		data_list.append(username)
+	first_name = request.GET.get('first_name')
+	if first_name != None or '':
+		data_list.append(first_name)
+	last_name = request.GET.get('last_name')
+	if last_name != None or '':
+		data_list.append(last_name)
+	email = request.GET.get('email')
+	if email != None or '':
+		data_list.append(email)
+	if len(data_list) !=4:
+		return HttpResponse('Some fields data missing',500)
+	else:
+		User.objects.create(username=username,first_name=first_name,last_name=last_name,email=email)
+		return HttpResponse('Success',200)
+
+def signup_view(request):
+	return render(request,'signup.html')
