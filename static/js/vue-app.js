@@ -2046,6 +2046,7 @@ __webpack_require__.r(__webpack_exports__);
         iziToast.success({
           title: 'OK',
           message: 'Successfully LoggedIn!',
+          position: 'topCenter',
           onClosed: function onClosed() {
             window.location.href = '/';
           }
@@ -2058,6 +2059,7 @@ __webpack_require__.r(__webpack_exports__);
           iziToast.error({
             title: 'Error',
             message: error.response.data,
+            position: 'topCenter',
             onClosed: function onClosed() {
               window.location.href = '/';
             }
@@ -2250,6 +2252,7 @@ __webpack_require__.r(__webpack_exports__);
         iziToast.success({
           title: 'OK',
           message: 'Successfully SignedUp!',
+          position: 'topCenter',
           onClosed: function onClosed() {
             window.location.href = '/login-view/';
           }
@@ -2260,6 +2263,7 @@ __webpack_require__.r(__webpack_exports__);
           iziToast.error({
             title: 'error',
             message: error.response.data,
+            position: 'topCenter',
             onClosed: function onClosed() {
               window.location.href = '/signup-view/';
             }
@@ -2272,6 +2276,7 @@ __webpack_require__.r(__webpack_exports__);
           iziToast.error({
             title: 'error',
             message: error.response.data,
+            position: 'topCenter',
             onClosed: function onClosed() {
               window.location.href = '/signup-view/';
             }
@@ -2281,6 +2286,7 @@ __webpack_require__.r(__webpack_exports__);
           iziToast.error({
             title: 'error',
             message: error.response.data,
+            position: 'topCenter',
             onClosed: function onClosed() {
               window.location.href = '/signup-view/';
             }
@@ -2290,6 +2296,7 @@ __webpack_require__.r(__webpack_exports__);
           iziToast.error({
             title: 'error',
             message: error.response.data,
+            position: 'topCenter',
             onClosed: function onClosed() {
               window.location.href = '/signup-view/';
             }

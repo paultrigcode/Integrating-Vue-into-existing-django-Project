@@ -49,6 +49,7 @@
 	    			iziToast.success({
                         title: 'OK',
                         message: 'Successfully LoggedIn!',
+                        position:'topCenter',
                         onClosed: function () {
                             window.location.href = '/'
                         }
@@ -62,6 +63,7 @@
 				      iziToast.error({
                         title: 'Error',
                         message: error.response.data,
+                       	position:'topCenter',
                         onClosed: function () {
                             window.location.href = '/'
                         }

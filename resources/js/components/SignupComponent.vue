@@ -112,6 +112,7 @@
 	    			iziToast.success({
                         title: 'OK',
                         message: 'Successfully SignedUp!',
+                        position:'topCenter',
                         onClosed: function () {
                             window.location.href = '/login-view/'
                         }
@@ -123,6 +124,7 @@
 				      iziToast.error({
                         title: 'error',
                         message: error.response.data,
+                        position:'topCenter',
                         onClosed: function () {
                             window.location.href = '/signup-view/'
                         }
@@ -136,6 +138,7 @@
 				      iziToast.error({
                         title: 'error',
                         message: error.response.data,
+                        position:'topCenter',
                         onClosed: function () {
                             window.location.href = '/signup-view/'
                         }
@@ -146,6 +149,7 @@
 				      iziToast.error({
                         title: 'error',
                         message: error.response.data,
+                        position:'topCenter',
                         onClosed: function () {
                             window.location.href = '/signup-view/'
                         }
@@ -156,6 +160,7 @@
 				      iziToast.error({
                         title: 'error',
                         message: error.response.data,
+                        position:'topCenter',
                         onClosed: function () {
                             window.location.href = '/signup-view/'
                         }
