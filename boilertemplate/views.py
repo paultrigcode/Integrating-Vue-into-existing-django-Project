@@ -69,3 +69,7 @@ def signup(request):
 
 def signup_view(request):
 	return render(request,'signup.html')
+
+@login_required
+def dashboard(request):
+	return render(request,'dashboard.html')
