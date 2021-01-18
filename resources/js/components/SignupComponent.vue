@@ -1,6 +1,6 @@
 <template>
 	<div class="signup-form">
-    <form action="" method="post">
+    <form v-on:submit.prevent="submit" method="post">
 		<h2>Sign Up</h2>
 		<p>Please fill in this form to create an account!</p>
 		<hr>
@@ -11,7 +11,7 @@
 						<span class="fa fa-user"></span>
 					</span>                    
 				</div>
-				<input type="text" class="form-control" name="username" placeholder="Username" required="required">
+				<input v-model=username type="text" class="form-control" name="username" placeholder="Username" required="required">
 			</div>
         </div>
         <div class="form-group">
@@ -21,7 +21,7 @@
 						<span class="fa fa-user"></span>
 					</span>                    
 				</div>
-				<input type="text" class="form-control" name="first name" placeholder="First Name" required="required">
+				<input v-model="first_name" type="text" class="form-control" name="first name" placeholder="First Name" required="required">
 			</div>
         </div>
         <div class="form-group">
@@ -31,7 +31,7 @@
 						<span class="fa fa-user"></span>
 					</span>                    
 				</div>
-				<input type="text" class="form-control" name="last name" placeholder="Last Name" required="required">
+				<input v-model="last_name" type="text" class="form-control" name="last name" placeholder="Last Name" required="required">
 			</div>
         </div>
         <div class="form-group">
@@ -41,7 +41,7 @@
 						<i class="fa fa-paper-plane"></i>
 					</span>                    
 				</div>
-				<input type="email" class="form-control" name="email" placeholder="Email Address" required="required">
+				<input v-model="email" type="email" class="form-control" name="email" placeholder="Email Address" required="required">
 			</div>
         </div>
 		<div class="form-group">
@@ -51,7 +51,7 @@
 						<i class="fa fa-lock"></i>
 					</span>                    
 				</div>
-				<input type="text" class="form-control" name="password" placeholder="Password" required="required">
+				<input v-model="password" type="text" class="form-control" name="password" placeholder="Password" required="required">
 			</div>
         </div>
 		<div class="form-group">
@@ -62,7 +62,7 @@
 						<i class="fa fa-check"></i>
 					</span>                    
 				</div>
-				<input type="text" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
+				<input type="text" v-model="password2" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
 			</div>
         </div>
         <div class="form-group">
@@ -78,10 +78,81 @@
 </template>
 
 <script>
-	
+	import axios from 'axios';
+	export default { 
+	    mounted() { 
+	        console.log('Component Search is here.') 
+	    },
+	    data(){
+	    	return{
+	    	 	username:'',
+	    	 	first_name:'',
+	    	 	last_name:'',
+	    	 	email:'',
+	    	 	password2:'',
+	    	 	password:''
+
+	    	}
+	    },
+	    methods: {
+		    submit: function() {
+	        	console.log('Component Search is here. button click') 
+	        	axios.get(`/signup/`, {
+	        		params:{
+	        			username:this.username,
+			    	 	first_name:this.first_name,
+			    	 	last_name:this.last_name,
+			    	 	email:this.email,
+			    	 	password2:this.password2,
+			    	 	password:this.password
+	    			}
+	    		})
+	    		.then((response)=>{
+	    			console.log(response)
+	    			if(response.status = 200){
+                    	window.location.href = '/login-view/'
+
+	    			}
+	    			else if (response.status = 401){
+	    				document.getElementById("demo").innerHTML = response.data
+	    				console.log(response.data)		
+    				}
+
+	    		})
+	    		.catch(function (error) {
+				    if (error.response.status = 500) {
+				      // Request made and server responded
+				      document.getElementById("demo").innerHTML = error.response.data
+				      console.log(error.response.data);
+				      console.log(error.response.status);
+				      console.log(error.response.headers);
+				    }
+				    else if (error.response.status = 500) {
+				      // Request made and server responded
+				      document.getElementById("demo").innerHTML = error.response.data 
+			      	}
+			      	else if (error.response.status = 401) {
+				      // Request made and server responded
+				      document.getElementById("demo").innerHTML = error.response.data 
+			      	}
+				    else if (error.request) {
+				      // The request was made but no response was received
+				      console.log(error.request);
+				    } else {
+				      // Something happened in setting up the request that triggered an Error
+				      console.log('Error', error.message);
+				    }
+
+  				});
+
+
+		    }
+	  }
+	} 
 </script>
 
-<style>
+
+<style scoped>
 body {
 	color: #fff;
 	background: #19aa8d;

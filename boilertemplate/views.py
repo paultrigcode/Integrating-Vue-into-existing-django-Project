@@ -3,6 +3,9 @@ from django.contrib import auth
 from django.contrib.auth import login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
+
 
 
 @login_required #redirect when user is not logged in
@@ -35,7 +38,7 @@ def login_view(request):
 
 def signup(request):
 	data_list = []
-	username = request.GET.get('firstname')
+	username = request.GET.get('username')
 	if username != None or '':
 		data_list.append(username)
 	first_name = request.GET.get('first_name')
@@ -47,11 +50,18 @@ def signup(request):
 	email = request.GET.get('email')
 	if email != None or '':
 		data_list.append(email)
-	if len(data_list) !=4:
-		return HttpResponse('Some fields data missing',500)
+	password =request.GET.get('password')
+	data_list.append(password)
+	password2 = request.GET.get('password2')
+	data_list.append(password2)
+	print(data_list)
+	if password2 != password:
+		return HttpResponse('password do not match',status=401)
+	if len(data_list) !=6:
+		return HttpResponse('Some fields data missing',status=500)
 	else:
-		User.objects.create(username=username,first_name=first_name,last_name=last_name,email=email)
-		return HttpResponse('Success',200)
+		User.objects.create(username=username,first_name=first_name,last_name=last_name,email=email,password=make_password(password))
+		return HttpResponse('Success',status=200)
 
 def signup_view(request):
 	return render(request,'signup.html')
