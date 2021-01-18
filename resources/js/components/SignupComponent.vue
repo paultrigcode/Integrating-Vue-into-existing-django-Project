@@ -51,7 +51,7 @@
 						<i class="fa fa-lock"></i>
 					</span>                    
 				</div>
-				<input v-model="password" type="text" class="form-control" name="password" placeholder="Password" required="required">
+				<input v-model="password" type="password" class="form-control" name="password" placeholder="Password" required="required">
 			</div>
         </div>
 		<div class="form-group">
@@ -62,7 +62,7 @@
 						<i class="fa fa-check"></i>
 					</span>                    
 				</div>
-				<input type="text" v-model="password2" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
+				<input type="password" v-model="password2" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
 			</div>
         </div>
         <div class="form-group">
@@ -109,31 +109,57 @@
 	    		})
 	    		.then((response)=>{
 	    			console.log(response)
-	    			if(response.status = 200){
-                    	window.location.href = '/login-view/'
-
-	    			}
-	    			else if (response.status = 401){
-	    				document.getElementById("demo").innerHTML = response.data
-	    				console.log(response.data)		
-    				}
-
+	    			iziToast.success({
+                        title: 'OK',
+                        message: 'Successfully SignedUp!',
+                        onClosed: function () {
+                            window.location.href = '/login-view/'
+                        }
+                    });
 	    		})
 	    		.catch(function (error) {
 				    if (error.response.status = 500) {
 				      // Request made and server responded
-				      document.getElementById("demo").innerHTML = error.response.data
+				      iziToast.error({
+                        title: 'error',
+                        message: error.response.data,
+                        onClosed: function () {
+                            window.location.href = '/signup-view/'
+                        }
+                    });
 				      console.log(error.response.data);
 				      console.log(error.response.status);
 				      console.log(error.response.headers);
 				    }
 				    else if (error.response.status = 500) {
 				      // Request made and server responded
-				      document.getElementById("demo").innerHTML = error.response.data 
+				      iziToast.error({
+                        title: 'error',
+                        message: error.response.data,
+                        onClosed: function () {
+                            window.location.href = '/signup-view/'
+                        }
+                    });
+			      	}
+			      	else if (error.response.status = 409) {
+				      // Request made and server responded
+				      iziToast.error({
+                        title: 'error',
+                        message: error.response.data,
+                        onClosed: function () {
+                            window.location.href = '/signup-view/'
+                        }
+                    });
 			      	}
 			      	else if (error.response.status = 401) {
 				      // Request made and server responded
-				      document.getElementById("demo").innerHTML = error.response.data 
+				      iziToast.error({
+                        title: 'error',
+                        message: error.response.data,
+                        onClosed: function () {
+                            window.location.href = '/signup-view/'
+                        }
+                    });
 			      	}
 				    else if (error.request) {
 				      // The request was made but no response was received

@@ -46,7 +46,6 @@
 	    		})
 	    		.then((response)=>{
 	    			console.log(response)
-	    			if(response.status = 200){
 	    			iziToast.success({
                         title: 'OK',
                         message: 'Successfully LoggedIn!',
@@ -54,19 +53,19 @@
                             window.location.href = '/'
                         }
                     });
-
-	    			}
-	    			else if (response.status = 401){
-	    				document.getElementById("demo").innerHTML = response.data
-	    				console.log(response.data)		
-    				}
-
 	    		})
 	    		.catch(function (error) {
 				    if (error.response.status = 401) {
 				      // Request made and server responded
 				      document.getElementById("demo").innerHTML = error.response.data
 				      console.log(error.response.data);
+				      iziToast.error({
+                        title: 'Error',
+                        message: error.response.data,
+                        onClosed: function () {
+                            window.location.href = '/'
+                        }
+                    });		
 				      console.log(error.response.status);
 				      console.log(error.response.headers);
 				    } else if (error.request) {

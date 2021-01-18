@@ -39,6 +39,8 @@ def login_view(request):
 def signup(request):
 	data_list = []
 	username = request.GET.get('username')
+	if User.objects.filter(username =username).exists():
+		return HttpResponse('username already exists,please choose a unique username',status=409)
 	if username != None or '':
 		data_list.append(username)
 	first_name = request.GET.get('first_name')
@@ -48,6 +50,8 @@ def signup(request):
 	if last_name != None or '':
 		data_list.append(last_name)
 	email = request.GET.get('email')
+	if User.objects.filter(email = email).exists():
+		return HttpResponse('email already exists,please choose a unique email',status=409)
 	if email != None or '':
 		data_list.append(email)
 	password =request.GET.get('password')

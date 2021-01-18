@@ -2043,24 +2043,25 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (response) {
         console.log(response);
-
-        if (response.status = 200) {
-          iziToast.success({
-            title: 'OK',
-            message: 'Successfully LoggedIn!',
-            onClosed: function onClosed() {
-              window.location.href = '/';
-            }
-          });
-        } else if (response.status = 401) {
-          document.getElementById("demo").innerHTML = response.data;
-          console.log(response.data);
-        }
+        iziToast.success({
+          title: 'OK',
+          message: 'Successfully LoggedIn!',
+          onClosed: function onClosed() {
+            window.location.href = '/';
+          }
+        });
       })["catch"](function (error) {
         if (error.response.status = 401) {
           // Request made and server responded
           document.getElementById("demo").innerHTML = error.response.data;
           console.log(error.response.data);
+          iziToast.error({
+            title: 'Error',
+            message: error.response.data,
+            onClosed: function onClosed() {
+              window.location.href = '/';
+            }
+          });
           console.log(error.response.status);
           console.log(error.response.headers);
         } else if (error.request) {
@@ -2246,26 +2247,53 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (response) {
         console.log(response);
-
-        if (response.status = 200) {
-          window.location.href = '/login-view/';
-        } else if (response.status = 401) {
-          document.getElementById("demo").innerHTML = response.data;
-          console.log(response.data);
-        }
+        iziToast.success({
+          title: 'OK',
+          message: 'Successfully SignedUp!',
+          onClosed: function onClosed() {
+            window.location.href = '/login-view/';
+          }
+        });
       })["catch"](function (error) {
         if (error.response.status = 500) {
           // Request made and server responded
-          document.getElementById("demo").innerHTML = error.response.data;
+          iziToast.error({
+            title: 'error',
+            message: error.response.data,
+            onClosed: function onClosed() {
+              window.location.href = '/signup-view/';
+            }
+          });
           console.log(error.response.data);
           console.log(error.response.status);
           console.log(error.response.headers);
         } else if (error.response.status = 500) {
           // Request made and server responded
-          document.getElementById("demo").innerHTML = error.response.data;
+          iziToast.error({
+            title: 'error',
+            message: error.response.data,
+            onClosed: function onClosed() {
+              window.location.href = '/signup-view/';
+            }
+          });
+        } else if (error.response.status = 409) {
+          // Request made and server responded
+          iziToast.error({
+            title: 'error',
+            message: error.response.data,
+            onClosed: function onClosed() {
+              window.location.href = '/signup-view/';
+            }
+          });
         } else if (error.response.status = 401) {
           // Request made and server responded
-          document.getElementById("demo").innerHTML = error.response.data;
+          iziToast.error({
+            title: 'error',
+            message: error.response.data,
+            onClosed: function onClosed() {
+              window.location.href = '/signup-view/';
+            }
+          });
         } else if (error.request) {
           // The request was made but no response was received
           console.log(error.request);
@@ -3812,7 +3840,7 @@ var render = function() {
               ],
               staticClass: "form-control",
               attrs: {
-                type: "text",
+                type: "password",
                 name: "password",
                 placeholder: "Password",
                 required: "required"
@@ -3845,7 +3873,7 @@ var render = function() {
               ],
               staticClass: "form-control",
               attrs: {
-                type: "text",
+                type: "password",
                 name: "confirm_password",
                 placeholder: "Confirm Password",
                 required: "required"
@@ -16442,15 +16470,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************************************!*\
   !*** ./resources/js/components/SignupComponent.vue ***!
   \*****************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SignupComponent_vue_vue_type_template_id_e902aeac_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SignupComponent.vue?vue&type=template&id=e902aeac&scoped=true& */ "./resources/js/components/SignupComponent.vue?vue&type=template&id=e902aeac&scoped=true&");
 /* harmony import */ var _SignupComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SignupComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/SignupComponent.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _SignupComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _SignupComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _SignupComponent_vue_vue_type_style_index_0_id_e902aeac_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SignupComponent.vue?vue&type=style&index=0&id=e902aeac&scoped=true&lang=css& */ "./resources/js/components/SignupComponent.vue?vue&type=style&index=0&id=e902aeac&scoped=true&lang=css&");
+/* empty/unused harmony star reexport *//* harmony import */ var _SignupComponent_vue_vue_type_style_index_0_id_e902aeac_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SignupComponent.vue?vue&type=style&index=0&id=e902aeac&scoped=true&lang=css& */ "./resources/js/components/SignupComponent.vue?vue&type=style&index=0&id=e902aeac&scoped=true&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -16482,7 +16509,7 @@ component.options.__file = "resources/js/components/SignupComponent.vue"
 /*!******************************************************************************!*\
   !*** ./resources/js/components/SignupComponent.vue?vue&type=script&lang=js& ***!
   \******************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
