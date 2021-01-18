@@ -47,7 +47,13 @@
 	    		.then((response)=>{
 	    			console.log(response)
 	    			if(response.status = 200){
-                    	window.location.href = '/'
+	    			iziToast.success({
+                        title: 'OK',
+                        message: 'Successfully LoggedIn!',
+                        onClosed: function () {
+                            window.location.href = '/'
+                        }
+                    });
 
 	    			}
 	    			else if (response.status = 401){

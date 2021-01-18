@@ -2045,7 +2045,13 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response);
 
         if (response.status = 200) {
-          window.location.href = '/';
+          iziToast.success({
+            title: 'OK',
+            message: 'Successfully LoggedIn!',
+            onClosed: function onClosed() {
+              window.location.href = '/';
+            }
+          });
         } else if (response.status = 401) {
           document.getElementById("demo").innerHTML = response.data;
           console.log(response.data);
