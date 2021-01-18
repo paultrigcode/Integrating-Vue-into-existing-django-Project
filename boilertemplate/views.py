@@ -20,7 +20,7 @@ def login(request):
     password = request.GET.get('password')
     print(password)
     print('hello')
-    user = auth.authenticate(username=username, password=password)
+    user = auth.authenticate(username=username.strip(), password=password)
 
     if user is not None and user.is_active:
         auth.login(request, user)
@@ -39,21 +39,21 @@ def login_view(request):
 def signup(request):
 	data_list = []
 	username = request.GET.get('username')
-	if User.objects.filter(username =username).exists():
+	if User.objects.filter(username =username.strip()).exists():
 		return HttpResponse('username already exists,please choose a unique username',status=409)
 	if username != None or '':
-		data_list.append(username)
+		data_list.append(username.strip())
 	first_name = request.GET.get('first_name')
 	if first_name != None or '':
-		data_list.append(first_name)
+		data_list.append(first_name.strip())
 	last_name = request.GET.get('last_name')
 	if last_name != None or '':
-		data_list.append(last_name)
+		data_list.append(last_name.strip())
 	email = request.GET.get('email')
-	if User.objects.filter(email = email).exists():
+	if User.objects.filter(email = email.strip()).exists():
 		return HttpResponse('email already exists,please choose a unique email',status=409)
 	if email != None or '':
-		data_list.append(email)
+		data_list.append(email.strip())
 	password =request.GET.get('password')
 	data_list.append(password)
 	password2 = request.GET.get('password2')
@@ -64,7 +64,7 @@ def signup(request):
 	if len(data_list) !=6:
 		return HttpResponse('Some fields data missing',status=500)
 	else:
-		User.objects.create(username=username,first_name=first_name,last_name=last_name,email=email,password=make_password(password))
+		User.objects.create(username=username.strip(),first_name=first_name.strip(),last_name=last_name.strip(),email=email.strip(),password=make_password(password))
 		return HttpResponse('Success',status=200)
 
 def signup_view(request):
