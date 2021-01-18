@@ -2022,10 +2022,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
@@ -3462,12 +3458,10 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("p", { attrs: { id: "demo" } }),
     _vm._v(" "),
-    _vm._m(0),
-    _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-offset-5 col-md-3" }, [
         _c("div", { staticClass: "form-login" }, [
-          _c("h4", [_vm._v("Welcome back.")]),
+          _vm._m(0),
           _vm._v(" "),
           _c("input", {
             directives: [
@@ -3544,15 +3538,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
+    return _c("h4", [
+      _vm._v("Welcome back...Do you want to "),
       _c(
         "a",
         {
           staticClass: "btn btn-primary",
           attrs: { href: "/signup-view/", role: "button" }
         },
-        [_vm._v("Click here to signup")]
-      )
+        [_vm._v("signup")]
+      ),
+      _vm._v("?")
     ])
   }
 ]

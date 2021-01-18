@@ -1,14 +1,10 @@
 <template>
 <div class="container">
 	<p id="demo"></p>
-	<div class="container">
-    	<a class="btn btn-primary" href="/signup-view/" role="button">Click here to signup</a>
-	</div>
-
     <div class="row">
         <div class="col-md-offset-5 col-md-3">
             <div class="form-login">
-            <h4>Welcome back.</h4>
+            <h4>Welcome back...Do you want to <a class="btn btn-primary" href="/signup-view/" role="button">signup</a>?</h4>
             <input v-model="username" type="text" id="userName" class="form-control input-sm chat-input" placeholder="username" />
             </br>
             <input v-model="password" type="password" id="userPassword" class="form-control input-sm chat-input" placeholder="password" />
