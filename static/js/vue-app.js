@@ -2022,6 +2022,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
@@ -3702,7 +3706,9 @@ var render = function() {
               )
             ])
           ])
-        ])
+        ]),
+        _vm._v(" "),
+        _vm._m(1)
       ])
     ])
   ])
@@ -3724,6 +3730,22 @@ var staticRenderFns = [
       ),
       _vm._v("?")
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "btn btn-block btn-social btn-github",
+        attrs: { href: "/oauth/login/github/" }
+      },
+      [
+        _c("span", { staticClass: "fa fa-github" }),
+        _vm._v(" Sign in with Github\n\t\t\t\t")
+      ]
+    )
   }
 ]
 render._withStripped = true

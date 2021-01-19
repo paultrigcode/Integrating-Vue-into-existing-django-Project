@@ -15,7 +15,11 @@
             </span>
             </div>
             </div>
-        
+              <a href="/oauth/login/github/" class="btn btn-block btn-social btn-github">
+    				<span class="fa fa-github"></span> Sign in with Github
+				</a>
+
+
         </div>
     </div>
 </div>
