@@ -18,6 +18,7 @@ from django.urls import path,include
 from .views import hello,login,login_view,signup,signup_view,dashboard
 from post.views import search
 from django.contrib.auth.views import LogoutView
+from recycle.views import create_recycler,recycler_create,recycler_view,get_recycler
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,6 +31,14 @@ urlpatterns = [
     path('search/', search),
     path('dashboard/', dashboard,name='dashboard'),
     path('oauth/', include('social_django.urls', namespace='social')),  # <--
+    path('recycler/create/',create_recycler,name='recycler_create'),
+    path('recycler/create/view/', recycler_create,name='recycle_create_view'),
+    path('recycler/view/', recycler_view,name='recycle_view'),
+    path('recyclers/list/', get_recycler,name='get_recycler'),
+
+
+
+
 
 
 
