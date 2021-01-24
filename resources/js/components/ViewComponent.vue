@@ -8,7 +8,7 @@
                     <div class="col-sm-4">
                         <div class="search-box">
                             <i class="material-icons">&#xE8B6;</i>
-                            <input type="text" class="form-control" placeholder="Search Customer;">
+                            <input @click="Recyclersearch" type="text" v-model="keyword" class="form-control" placeholder="Search Customer;">
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,8 @@
         },
         data(){
             return{
-                recyclers:[]
+                recyclers:[],
+                keyword:''
 
 
             }
@@ -104,7 +105,18 @@
                     }
 
                 });
-
+            },
+            Recyclersearch() {
+                console.log('Component Search is here. button click') 
+                axios.get(`/recyclers/list/`,{
+                    params: {
+                        keyword: this.keyword,
+                    }
+                })
+                .then((response)=>{
+                    console.log(response)
+                    this.recyclers = response.data;
+                })
 
             }
       }

@@ -6,6 +6,7 @@ from django.http import HttpResponse, JsonResponse, QueryDict
 from .models import Recycler
 from django.forms.models import model_to_dict
 from datetime import date, timedelta
+from django.db.models import Q
 
 
 
@@ -73,6 +74,12 @@ def create_recycler(request):
 		return HttpResponse('Success',status=200)
 
 def get_recycler(request):
-	recycler = list(Recycler.objects.all().values())
-	return JsonResponse(recycler,safe=False)
+    keyword = request.GET.get('keyword')
+    if keyword != None:
+        lookups= Q(first_name__icontains=keyword) | Q(last_name__icontains=keyword) | Q(phone_number__icontains=keyword)
+        recycler =list(Recycler.objects.filter(lookups).values())
+    else:
+        recycler = list(Recycler.objects.all().values())
+    return JsonResponse(recycler,safe=False)
+
 
