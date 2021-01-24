@@ -8,7 +8,7 @@
                     <div class="col-sm-4">
                         <div class="search-box">
                             <i class="material-icons">&#xE8B6;</i>
-                            <input @click="Recyclersearch" type="text" v-model="keyword" class="form-control" placeholder="Search Customer;">
+                            <input v-on:keyup.enter="Recyclersearch" type="text" v-model="keyword" class="form-control" placeholder="Search Customer;">
                         </div>
                     </div>
                 </div>
@@ -116,7 +116,35 @@
                 .then((response)=>{
                     console.log(response)
                     this.recyclers = response.data;
+                    if (response.status == 204){
+                        iziToast.info({
+                        title: 'Empty Search result',
+                        message: "No house Household details matches the search query,phone_number,customer-number,names, and current point",
+                        position:'topCenter',
+                    });     
+
+                    }
                 })
+                .catch(function (error) {
+                    if (error.response.status = 409) {
+                      // Request made and server responded
+                      console.log(error.response.data);
+                      iziToast.error({
+                        title: 'Error',
+                        message: error.response.data,
+                        position:'topCenter',
+                    });     
+                      console.log(error.response.status);
+                      console.log(error.response.headers);
+                    } else if (error.request) {
+                      // The request was made but no response was received
+                      console.log(error.request);
+                    } else {
+                      // Something happened in setting up the request that triggered an Error
+                      console.log('Error', error.message);
+                    }
+
+                });
 
             }
       }

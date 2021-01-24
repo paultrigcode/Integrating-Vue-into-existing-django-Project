@@ -2570,6 +2570,32 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         console.log(response);
         _this2.recyclers = response.data;
+
+        if (response.status == 204) {
+          iziToast.info({
+            title: 'Empty Search result',
+            message: "No house Household details matches the search query,phone_number,customer-number,names, and current point",
+            position: 'topCenter'
+          });
+        }
+      })["catch"](function (error) {
+        if (error.response.status = 409) {
+          // Request made and server responded
+          console.log(error.response.data);
+          iziToast.error({
+            title: 'Error',
+            message: error.response.data,
+            position: 'topCenter'
+          });
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
       });
     }
   }
@@ -4789,7 +4815,15 @@ var render = function() {
                   attrs: { type: "text", placeholder: "Search Customer;" },
                   domProps: { value: _vm.keyword },
                   on: {
-                    click: _vm.Recyclersearch,
+                    keyup: function($event) {
+                      if (
+                        !$event.type.indexOf("key") &&
+                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                      ) {
+                        return null
+                      }
+                      return _vm.Recyclersearch($event)
+                    },
                     input: function($event) {
                       if ($event.target.composing) {
                         return

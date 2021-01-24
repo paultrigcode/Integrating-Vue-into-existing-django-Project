@@ -78,6 +78,8 @@ def get_recycler(request):
     if keyword != None:
         lookups= Q(first_name__icontains=keyword) | Q(last_name__icontains=keyword) | Q(phone_number__icontains=keyword)
         recycler =list(Recycler.objects.filter(lookups).values())
+        if recycler == []:
+        	return HttpResponse('No house Household details matches the search query,phone_number,customer-number,names, and current point',status=204)
     else:
         recycler = list(Recycler.objects.all().values())
     return JsonResponse(recycler,safe=False)
