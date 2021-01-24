@@ -70,8 +70,9 @@ def create_recycler(request):
 	elif Recycler.objects.filter(phone_number = phone_number.strip()).exists():
 		return HttpResponse('phone_number already exists,please choose a unique phone_number',status=409)
 	else:
-		Recycler.objects.create(first_name=first_name.strip(),last_name=last_name.strip(),street=street.strip(),house_number=house_number.strip(),phone_number=phone_number.strip(),date_joined=date.today())
-		return HttpResponse('Success',status=200)
+		create_model = model_to_dict(Recycler.objects.create(first_name=first_name.strip(),last_name=last_name.strip(),street=street.strip(),house_number=house_number.strip(),phone_number=phone_number.strip(),date_joined=date.today()))
+		print(create_model['customer_number'])		# customer_number = 
+		return HttpResponse(create_model['customer_number'],content_type='text/plain',status=200)
 
 def get_recycler(request):
     keyword = request.GET.get('keyword')

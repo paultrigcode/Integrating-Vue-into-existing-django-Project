@@ -2025,14 +2025,16 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (response) {
         console.log(response);
-        iziToast.success({
-          title: 'OK',
-          message: 'Successfully Signed UP!',
-          position: 'topCenter',
-          onClosed: function onClosed() {
-            window.location.href = '/';
-          }
-        });
+
+        if (response.status == 200) {
+          console.log(response);
+          iziToast.success({
+            title: 'OK',
+            message: 'Successfully Registered Customer! Your Customer Number is : ' + response.data,
+            position: 'topCenter',
+            timeout: 1000000
+          });
+        }
       })["catch"](function (error) {
         if (error.response.status = 409) {
           // Request made and server responded
