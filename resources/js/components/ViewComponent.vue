@@ -4,7 +4,7 @@
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
-                    <div class="col-sm-8"><h2>Customer <b>Details</b></h2></div>
+                    <div class="col-sm-8"><h2>Customer <b>List</b></h2></div>
                     <div class="col-sm-4">
                         <div class="search-box">
                             <i class="material-icons">&#xE8B6;</i>
@@ -16,22 +16,27 @@
             <table class="table table-striped table-hover table-bordered">
                 <thead>
                     <tr>
-                        <th>#</th>
                         <th>First Name <i class="fa fa-sort"></i></th>
                         <th>Last Name <i class="fa fa-sort"></i></th>
                         <th>Street</th>
                         <th>House number <i class="fa fa-sort"></i></th>
                         <th>Phone number</th>
+                        <th>Customer Number</th>
+                        <th>Current Point</th>
+                        <th> Actions </th>
+
+
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="recycler in recyclers">
-                        <td>{{recycler.id}}</td>
                         <td>{{recycler.first_name}}</td>
                         <td>{{recycler.last_name}}</td>
                         <td>{{recycler.street}}</td>
                         <td>{{recycler.house_number}}</td>
                         <td>{{recycler.phone_number}}</td>
+                        <td>{{recycler.customer_number}}</td>
+                        <td>{{recycler.current_points}}</td>
                         <td>
                             <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
                             <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>

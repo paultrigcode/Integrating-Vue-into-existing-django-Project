@@ -19,7 +19,7 @@
                                             <input type="text" required="required" v-model="last_name" class="form-control" placeholder="Last Name *" value="" />
                                         </div>
                                         <div class="form-group">
-                                            <input type="tel" required="required" v-model="phone_number" maxlength="10" minlength="10" class="form-control" placeholder="Phone number *" value="" />
+                                            <input type="tel" required="required" v-model="phone_number" maxlength="11" minlength="11" class="form-control" placeholder="Phone number *" value="" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">

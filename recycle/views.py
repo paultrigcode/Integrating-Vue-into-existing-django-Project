@@ -7,6 +7,8 @@ from .models import Recycler
 from django.forms.models import model_to_dict
 from datetime import date, timedelta
 from django.db.models import Q
+from .models import Pickup,Material,Item
+import json
 
 
 
@@ -23,11 +25,48 @@ from django.db.models import Q
 #         if form.is_valid():
 #             model = form.save()
 #         return JsonResponse(data={"valid": False,"errors": form.errors},safe=False)
+def update_pickup_points(pickup, household):
+    """ Update households points with points from pickup 'pickup' """
+    if not pickup and not household:
+        return None
 
+    if not pickup.points_updated:
+        _current_points_ = household.current_points
+        if _current_points_:
+            new_points = _current_points_ + pickup.points
+        else:
+            new_points = pickup.points
+
+        household.current_points = new_points
+        try:
+            household.save()
+        except ElasticsearchException as e:
+            pass # # Cant connect to elastic search
+        except Exception as e:
+            raise e
+
+        pickup.points_updated = True
+        pickup.save()
+    return pickup
+
+
+def convert_to_float(val):
+  try:
+    return float( val )
+  except Exception as e:
+    return float( re.sub("\D+",'', val ) )
+
+def create_pickup_item(pickup_id, material_name, weight ):
+  try:
+    material = Material.objects.get(name=material_name)
+    return ( Item.objects.create(pickup_id=pickup_id, weight=convert_to_float(weight), material_id=material.id ).weight, material.price )
+  except Exception as e:
+    return None
 
 @login_required
 def recycler_create(request):
     return render(request, 'create.html')
+
 @login_required
 def recycler_view(request):
     return render(request, 'view.html')
@@ -77,7 +116,7 @@ def create_recycler(request):
 def get_recycler(request):
     keyword = request.GET.get('keyword')
     if keyword != None:
-        lookups= Q(first_name__icontains=keyword) | Q(last_name__icontains=keyword) | Q(phone_number__icontains=keyword)
+        lookups= Q(first_name__icontains=keyword) | Q(last_name__icontains=keyword) | Q(phone_number__icontains=keyword) |Q(customer_number__icontains=keyword)
         recycler =list(Recycler.objects.filter(lookups).values())
         if recycler == []:
         	return HttpResponse('No house Household details matches the search query,phone_number,customer-number,names, and current point',status=204)
@@ -85,4 +124,43 @@ def get_recycler(request):
         recycler = list(Recycler.objects.all().values())
     return JsonResponse(recycler,safe=False)
 
+def pickup_create(request):
+	return render(request,'pickup.html')
+
+def auto_complete(request):
+	return render(request,'auto.html')
+
+def add_pickup(request,id):
+    data = json.loads(request.body)
+    print(data)
+    print(data["PET"])
+    print(data.items())
+
+    print(id)
+    pickup= Pickup()
+    # pickup=Pickup.objects.create(recycler_id=id,collector = request.user, date = date.today(),points_updated = False)
+    pickup.recycler_id = id
+    pickup.collector = request.user
+    pickup.date = date.today()
+    pickup.points_updated = False
+    pickup.save()
+
+    total_points = 0
+
+
+    for k, v in data.items():
+        tmp = create_pickup_item(pickup.id, k, v)
+        print(tmp)
+        if tmp:
+            total_points += int(round(round(tmp[0], 1) * tmp[1]))
+    print(total_points)
+
+    pickup.points = total_points
+    pickup.save()
+    update_pickup_points(pickup,pickup.recycler)
+    response_data = {
+       "data": "success",
+    }	
+   
+    return JsonResponse(response_data,safe=False)
 
