@@ -2324,8 +2324,18 @@ __webpack_require__.r(__webpack_exports__);
           PET: this.items.PET[index],
           Sachet: this.items.Sachet[index],
           Can: this.items.Can[index]
-        }).then(function (response) {});
+        }).then(function (response) {
+          iziToast.success({
+            title: 'Success',
+            message: response.data,
+            position: 'topCenter'
+          });
+        });
       }
+
+      this.items.PET[index] = '';
+      this.items.Sachet[index] = '';
+      this.items.Can[index] = '';
     },
     getRecyclers: function getRecyclers() {
       var _this = this;

@@ -18,7 +18,7 @@ from django.urls import path,include
 from .views import hello,login,login_view,signup,signup_view,dashboard
 from post.views import search
 from django.contrib.auth.views import LogoutView
-from recycle.views import create_recycler,recycler_create,recycler_view,get_recycler,pickup_create,auto_complete,add_pickup
+from recycle.views import create_recycler,recycler_create,recycler_view,get_recycler,pickup_create,auto_complete,add_pickup,test
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -38,6 +38,8 @@ urlpatterns = [
     path('pickup/create/view/', pickup_create,name='pickup_create'),
     path('auto-complete/', auto_complete,name='auto_complete'),
     path('<int:id>/pickup/send/',add_pickup,name="add_pickup"),
+    path('test/',test,name='test'),
+
 
 
 

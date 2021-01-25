@@ -162,5 +162,8 @@ def add_pickup(request,id):
        "data": "success",
     }	
    
-    return JsonResponse(response_data,safe=False)
+    return HttpResponse('Succesfully sent Pickup',status=200)
+
+def test(request):
+	return render(request,'test.html')
 

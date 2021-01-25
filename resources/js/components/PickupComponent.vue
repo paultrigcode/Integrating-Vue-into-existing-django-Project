@@ -102,8 +102,17 @@
                 			Can:this.items.Can[index]
                 	})
                     .then((response) => {
+                    	iziToast.success({
+                        title: 'Success',
+                        message: response.data,
+                        position:'topCenter',
+                    });   
                     })
+
             	}
+            	this.items.PET[index]='';
+                this.items.Sachet[index]='';
+                this.items.Can[index]=''  
        		 },
             getRecyclers() {
                 console.log('Component Search is here. button click') 
