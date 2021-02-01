@@ -130,7 +130,7 @@ media/
 *.pyc
 *.db
 *.pid
-db.sqlite3
+db.prod.sqlite3
 
 # Ignore Django Migrations in Development if you are working on team
 
