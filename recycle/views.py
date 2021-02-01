@@ -163,7 +163,3 @@ def add_pickup(request,id):
     }	
    
     return HttpResponse('Succesfully sent Pickup',status=200)
-
-def test(request):
-	return render(request,'test.html')
-
